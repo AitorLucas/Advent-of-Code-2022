@@ -36,4 +36,4 @@ elvesIds.forEach{ ids in
         count += 1
     }
 }
-print(count)
+print("Number of fully contained:", count)
