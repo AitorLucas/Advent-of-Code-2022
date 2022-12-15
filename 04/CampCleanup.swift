@@ -20,7 +20,8 @@ func mountSet(withIds idsString: Substring) -> Set<Int> {
     return Set(stride(from: startId, through: endId, by: 1).map { Int($0) })
 }
 
-var count = 0
+var countFullyContained = 0
+var countOverlaps = 0
 elvesIds.forEach{ ids in 
     let idsSplitted = ids.split(separator: ",")
     let firstIdsString = idsSplitted.first!
@@ -32,8 +33,16 @@ elvesIds.forEach{ ids in
 
     let diff = first.intersection(last)
     if diff == first || diff == last {
-        print(ids)
-        count += 1
+        // print("Inter", ids)
+        countFullyContained += 1
+    }
+
+    // - Part two
+    if !diff.isEmpty {
+        // print("Over", ids)
+        countOverlaps += 1
     }
 }
-print("Number of fully contained:", count)
+print("Number of fully contained:", countFullyContained)
+print("Number of overlaps:", countOverlaps)
+
