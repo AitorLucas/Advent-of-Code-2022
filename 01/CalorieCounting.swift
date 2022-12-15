@@ -23,3 +23,12 @@ let caloriesWithElves = caloriesMatrix.map({ $0.reduce(0, +) })
 let maxCalories = caloriesWithElves.max()!
 
 print(maxCalories)
+
+// - Part two
+var caloriesWithElvesSorted = caloriesWithElves.sorted()
+let topThreeCalories = [caloriesWithElvesSorted.removeLast(),
+                        caloriesWithElvesSorted.removeLast(),
+                        caloriesWithElvesSorted.removeLast()]
+let sumTopThreeCalories = topThreeCalories.reduce(0, +)
+
+print(sumTopThreeCalories)
