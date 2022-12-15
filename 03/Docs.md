@@ -40,6 +40,7 @@ Find the item type that appears in both compartments of each rucksack. **What is
 
 To begin, [get your puzzle input](../03/Input.txt).
 
+---
 ## Part Two
 
 As you finish identifying the misplaced items, the Elves come to you with another issue.
