@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+struct NoSpaceLeftOnDevice: Challenge {
+  var input: String
+
+  init() {
+    input = """
+"""
+  }
+
+  func solve() {
+
+  }
+}
+

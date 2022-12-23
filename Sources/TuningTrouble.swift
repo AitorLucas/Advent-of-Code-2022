@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct TuningTrouble: Challenge {
+  var input: String
+
+  init() {
+    input = """
+"""
+  }
+
+  func solve() {
+
+  }
+}

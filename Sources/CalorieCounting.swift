@@ -7,13 +7,9 @@
 
 import Foundation
 
-struct CalorieCounting {
-  let input: String
-
-  init(input: String) {
-    self.input = input
-  }
-
+struct CalorieCounting: Challenge {
+  var input: String
+  
   init() {
     input = """
 1000

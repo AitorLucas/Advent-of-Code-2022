@@ -11,10 +11,31 @@ import Darwin
 public struct AdventOfCode2022 {
 
   public static func main() {
+    let selectedNumber = InputHandler.shared.requestChallengeSelection()
+    let inputString = InputHandler.shared.requestFile(withDefaultNumber: selectedNumber)
 
-    let inputString = InputHandler().requestFile()
-    let cCounting = CalorieCounting(input: inputString)
-    cCounting.solve()
+    var challenge: Challenge?
+    switch selectedNumber {
+      case 1:
+        challenge = CalorieCounting()
+      case 2:
+        challenge = RockPaperScissors()
+      case 3:
+        challenge = RucksackReorganization()
+      case 4:
+        challenge = CampCleanup()
+      case 5:
+        challenge = SupplyStacks()
+      case 6:
+        challenge = TuningTrouble()
+      case 7:
+        challenge = NoSpaceLeftOnDevice()
+      case 8:
+        challenge = TreetopTreeHouse()
+      default:
+        exit(EXIT_FAILURE)
+    }
+    challenge?.input = inputString
+    challenge?.solve()
   }
 }
-

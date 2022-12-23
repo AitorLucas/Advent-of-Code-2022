@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct RucksackReorganization {
-  let input: String
-
-  init(input: String) {
-    self.input = input
-  }
+struct RucksackReorganization: Challenge {
+  var input: String
 
   init() {
     input = """
@@ -27,24 +23,6 @@ CrZsJsPPZsGzwwsLwLmpwMDw
 
   func solve() {
     let bagsStrings = input.components(separatedBy: "\n")
-
-    func calculatePriority(for diff: Set<Substring.Element>) -> Int {
-      let character = Character(extendedGraphemeClusterLiteral: diff.first!)
-      let asciiValue = Int(character.asciiValue!)
-      var priority = 0
-      // Lowercase
-      if asciiValue >= 97 && asciiValue <= 122 {
-        priority = asciiValue - 96
-      }
-      // Uppercase
-      else if asciiValue >= 65 && asciiValue <= 90 {
-        priority = asciiValue - 38
-      }
-      else {
-        fatalError("Character out of bounds: \(character)")
-      }
-      return priority
-    }
 
     var sum = 0
     bagsStrings.forEach { bag in
@@ -82,5 +60,23 @@ CrZsJsPPZsGzwwsLwLmpwMDw
       sum += priority
     }
     print("Sum:", sum)
+  }
+
+  func calculatePriority(for diff: Set<Substring.Element>) -> Int {
+    let character = Character(extendedGraphemeClusterLiteral: diff.first!)
+    let asciiValue = Int(character.asciiValue!)
+    var priority = 0
+    // Lowercase
+    if asciiValue >= 97 && asciiValue <= 122 {
+      priority = asciiValue - 96
+    }
+    // Uppercase
+    else if asciiValue >= 65 && asciiValue <= 90 {
+      priority = asciiValue - 38
+    }
+    else {
+      fatalError("Character out of bounds: \(character)")
+    }
+    return priority
   }
 }

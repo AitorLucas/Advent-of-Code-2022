@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct RockPaperScissors {
-  let input: String
-
-  init(input: String) {
-    self.input = input
-  }
+struct RockPaperScissors: Challenge {
+  var input: String
 
   init() {
     input = """
@@ -25,41 +21,7 @@ C Z
   func solve() {
     let roundsStrings = input.components(separatedBy: "\n")
     let roundsMatrix = roundsStrings.map({ $0.components(separatedBy: " ") })
-    
-    func calculateScore(for round: [String]) -> Int {
-      var roundScore = 0
-      let opponent = round[0]
-      let myself = round[1]
-      // Shape
-      switch myself {
-        case "X":
-          roundScore += 1
-        case "Y":
-          roundScore += 2
-        case "Z":
-          roundScore += 3
-        default:
-          fatalError()
-      }
-      // Outcome
-      switch (opponent, myself) {
-          // Draw case
-        case ("A", "X"),
-          ("B", "Y"),
-          ("C", "Z"):
-          roundScore += 3
-          // Win case
-        case ("A", "Y"),
-          ("B", "Z"),
-          ("C", "X"):
-          roundScore += 6
-          // Lost case
-        default:
-          break
-      }
-      return roundScore
-    }
-    
+
     var score = 0
     roundsMatrix.forEach({ round in
       let roundScore = calculateScore(for: round)
@@ -108,5 +70,39 @@ C Z
       score += roundScore
     })
     print("Final Score:", score)
+  }
+
+  func calculateScore(for round: [String]) -> Int {
+    var roundScore = 0
+    let opponent = round[0]
+    let myself = round[1]
+    // Shape
+    switch myself {
+      case "X":
+        roundScore += 1
+      case "Y":
+        roundScore += 2
+      case "Z":
+        roundScore += 3
+      default:
+        fatalError()
+    }
+    // Outcome
+    switch (opponent, myself) {
+        // Draw case
+      case ("A", "X"),
+        ("B", "Y"),
+        ("C", "Z"):
+        roundScore += 3
+        // Win case
+      case ("A", "Y"),
+        ("B", "Z"),
+        ("C", "X"):
+        roundScore += 6
+        // Lost case
+      default:
+        break
+    }
+    return roundScore
   }
 }

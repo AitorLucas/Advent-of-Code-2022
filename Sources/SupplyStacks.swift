@@ -7,3 +7,17 @@
 
 import Foundation
 
+struct SupplyStacks: Challenge {
+  var input: String
+  
+  init() {
+    input = """
+
+"""
+  }
+
+  func solve() {
+
+  }
+}
+

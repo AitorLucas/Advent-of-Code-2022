@@ -6,3 +6,16 @@
 //
 
 import Foundation
+
+struct TreetopTreeHouse: Challenge {
+  var input: String
+
+  init() {
+    input = """
+"""
+  }
+
+  func solve() {
+
+  }
+}

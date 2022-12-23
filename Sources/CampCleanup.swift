@@ -7,12 +7,8 @@
 
 import Foundation
 
-struct CampCleanup {
-  let input: String
-
-  init(input: String) {
-    self.input = input
-  }
+struct CampCleanup: Challenge {
+  var input: String
 
   init() {
     input = """
@@ -29,17 +25,9 @@ struct CampCleanup {
     let elvesIds = input.components(separatedBy: "\n")
     print(elvesIds)
 
-    func mountSet(withIds idsString: Substring) -> Set<Int> {
-      let idSplitted = idsString.split(separator: "-")
-      let startId = Int(idSplitted.first!)!
-      let endId = Int(idSplitted.last!)!
-
-      return Set(stride(from: startId, through: endId, by: 1).map { Int($0) })
-    }
-
     var countFullyContained = 0
     var countOverlaps = 0
-    elvesIds.forEach{ ids in
+    elvesIds.forEach { ids in
       let idsSplitted = ids.split(separator: ",")
       let firstIdsString = idsSplitted.first!
       let lastIdsString = idsSplitted.last!
@@ -62,5 +50,13 @@ struct CampCleanup {
     }
     print("Number of fully contained:", countFullyContained)
     print("Number of overlaps:", countOverlaps)
+  }
+
+  func mountSet(withIds idsString: Substring) -> Set<Int> {
+    let idSplitted = idsString.split(separator: "-")
+    let startId = Int(idSplitted.first!)!
+    let endId = Int(idSplitted.last!)!
+
+    return Set(stride(from: startId, through: endId, by: 1).map { Int($0) })
   }
 }
