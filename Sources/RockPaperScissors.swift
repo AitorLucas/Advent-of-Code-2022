@@ -1,13 +1,28 @@
+//
+//  RockPaperScissors.swift
+//
+//
+//  Created by Aitor on 23/12/22.
+//
+
 import Foundation
 
 struct RockPaperScissors {
-  let input = """
+  let input: String
+
+  init(input: String) {
+    self.input = input
+  }
+
+  init() {
+    input = """
 A Y
 B X
 C Z
 """
+  }
   
-  init() {
+  func solve() {
     let roundsStrings = input.components(separatedBy: "\n")
     let roundsMatrix = roundsStrings.map({ $0.components(separatedBy: " ") })
     

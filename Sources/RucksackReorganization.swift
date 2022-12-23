@@ -1,7 +1,21 @@
+//
+//  RucksackReorganization.swift
+//
+//
+//  Created by Aitor on 23/12/22.
+//
+
 import Foundation
 
 struct RucksackReorganization {
-  let input = """
+  let input: String
+
+  init(input: String) {
+    self.input = input
+  }
+
+  init() {
+    input = """
 vJrwpWtwJgWrhcsFMMfFFhFp
 jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL
 PmmdzqPrVvPwwTWBwg
@@ -9,8 +23,9 @@ wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
 ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw
 """
+  }
 
-  init() {
+  func solve() {
     let bagsStrings = input.components(separatedBy: "\n")
 
     func calculatePriority(for diff: Set<Substring.Element>) -> Int {

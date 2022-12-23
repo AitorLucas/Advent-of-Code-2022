@@ -1,7 +1,21 @@
+//
+//  CalorieCounting.swift
+//
+//
+//  Created by Aitor on 23/12/22.
+//
+
 import Foundation
 
 struct CalorieCounting {
-  let input = """
+  let input: String
+
+  init(input: String) {
+    self.input = input
+  }
+
+  init() {
+    input = """
 1000
 2000
 3000
@@ -17,8 +31,9 @@ struct CalorieCounting {
 
 10000
 """
+  }
 
-  init() {
+  func solve() {
     let elvesVector = input.components(separatedBy: "\n\n")
     let caloriesMatrix = elvesVector.map({ $0.components(separatedBy: "\n").map({ Int($0)! }) })
     let caloriesWithElves = caloriesMatrix.map({ $0.reduce(0, +) })

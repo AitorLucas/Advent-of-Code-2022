@@ -1,7 +1,21 @@
+//
+//  CampCleanup.swift
+//
+//
+//  Created by Aitor on 23/12/22.
+//
+
 import Foundation
 
 struct CampCleanup {
-  let input = """
+  let input: String
+
+  init(input: String) {
+    self.input = input
+  }
+
+  init() {
+    input = """
 2-4,6-8
 2-3,4-5
 5-7,7-9
@@ -9,8 +23,9 @@ struct CampCleanup {
 6-6,4-6
 2-6,4-8
 """
+  }
 
-  init() {
+  func solve() {
     let elvesIds = input.components(separatedBy: "\n")
     print(elvesIds)
 
